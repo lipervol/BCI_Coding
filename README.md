@@ -28,7 +28,7 @@
 
 ### 刺激选择
 
-根据《*Stimuli design for SSVEP-based brain computer-interface*》一文所述，拟采取蓝色或绿色刺激，刺激频率15Hz，刺激强度的控制信号采用正弦形式。
+根据《*Stimuli design for SSVEP-based brain computer-interface*》一文所述，拟采取蓝色或绿色刺激，刺激频率6-15Hz（低频段），刺激强度的控制信号采用正弦形式。
 
 ### 采集部位选择
 
