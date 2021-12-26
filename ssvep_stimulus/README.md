@@ -4,4 +4,4 @@
 * 每个色块都使用了一个单独的线程来渲染，如果频率要求更高的话，建议将色块分区域单独渲染
 * 色块的驱动信号是方波信号，据说正弦信号比较好，所以也准备了正弦信号驱动的函数，但是闪烁频率与理论值有一定差距
 
-![截图](https://github.com/lipervol/BCI_Coding/blob/master/stimulus/20211226134633.png)
+![截图](https://github.com/lipervol/BCI_Coding/blob/master/ssvep_stimulus/20211226134633.png)
