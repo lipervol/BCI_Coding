@@ -1,8 +1,8 @@
 #! coding:UTF-8
 import pandas as pd
 
-file_path = "./9hz.txt"  # 文件路径
-channel_number = [item + 1 for item in list(range(6))]  # 通道号
+file_path = "./data.txt"  # 文件路径
+channel_number = [item + 1 for item in list(range(8))]  # 通道号
 with open(file_path) as f:
     data = f.readlines()
 print(data[2][1:])
@@ -15,4 +15,4 @@ for i in range(len(data)):
         output[i].append(float(data[i][channel_number[j]]))
 
 df = pd.DataFrame(output, columns=["ch"+str(item) for item in channel_number])
-df.to_excel(file_path[0:-3] + "_output.xlsx", index=False)
+df.to_excel(file_path[0:-4] + "_output.xlsx", index=False)
