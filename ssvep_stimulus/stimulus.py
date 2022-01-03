@@ -60,7 +60,9 @@ locations = [[(300, 700), (750, 1150)]]  # 色块位置
 frequency = [16]  # 闪烁频率
 img = np.zeros(size, np.uint8)
 pads = gen_pads(locations, [255, 0, 0])
-
+out_win = "stimulus"
+cv2.namedWindow(out_win, cv2.WINDOW_NORMAL)
+cv2.setWindowProperty(out_win, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 # 多线程单独渲染
 threads = []
 for i in range(len(locations)):
@@ -70,8 +72,16 @@ for i in range(len(threads)):
 
 while True:
     cv2.waitKey(1)
-    out_win = "stimulus"
-    cv2.namedWindow(out_win, cv2.WINDOW_NORMAL)
-    cv2.setWindowProperty(out_win, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     cv2.imshow(out_win, img)
+
+# region = locations[0]
+# x1, x2, y1, y2 = region[0][0], region[0][1], region[1][0], region[1][1]
+# pic = np.zeros(size, np.uint8)
+# pic[x1:x2, y1:y2] = pads[0]
+# while True:
+#     cv2.waitKey(3)
+#     cv2.imshow(out_win, img)
+#     cv2.waitKey(3)
+#     cv2.imshow(out_win, pic)
+
 
