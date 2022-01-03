@@ -57,7 +57,7 @@ def twinkle(region, image, pad, period):
 
 size = (1080, 1920, 3)  # 画面大小
 locations = [[(300, 700), (750, 1150)]]  # 色块位置
-frequency = [16]  # 闪烁频率
+frequency = [50/3]  # 闪烁频率
 img = np.zeros(size, np.uint8)
 pads = gen_pads(locations, [255, 0, 0])
 out_win = "stimulus"
@@ -79,9 +79,9 @@ while True:
 # pic = np.zeros(size, np.uint8)
 # pic[x1:x2, y1:y2] = pads[0]
 # while True:
-#     cv2.waitKey(3)
+#     cv2.waitKey(30)
 #     cv2.imshow(out_win, img)
-#     cv2.waitKey(3)
+#     cv2.waitKey(30)
 #     cv2.imshow(out_win, pic)
 
 
