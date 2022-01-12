@@ -8,13 +8,13 @@
 
 安装好设备之后带上大概是这个效果：
 
-![佩戴](https://github.com/lipervol/BCI_Coding/blob/master/A1B99D9C1FCB650DB7F338446B33E16A.png)
+![佩戴](https://github.com/lipervol/BCI_Coding/blob/master/image/A1B99D9C1FCB650DB7F338446B33E16A.png)
 
 初步测试了一下输出，看着有些乱，但是大概可以看到在25Hz左右有一个明显的尖峰，也就是有较强的beta波，表明我此时处于一个注意力集中的状态（*看数据ing*）
 
-![数据](https://github.com/lipervol/BCI_Coding/blob/master/3528488a43ec2eb33f270e994ce7c2f.png)
+![数据](https://github.com/lipervol/BCI_Coding/blob/master/image/3528488a43ec2eb33f270e994ce7c2f.png)
 
-![图例](https://github.com/lipervol/BCI_Coding/blob/master/1ab91ad2add3f379d61b381f2bf48f7.png)
+![图例](https://github.com/lipervol/BCI_Coding/blob/master/image/1ab91ad2add3f379d61b381f2bf48f7.png)
 
 ## Day Two
 
@@ -32,7 +32,7 @@
 
 ### 采集部位选择
 
-![10-20系统](https://github.com/lipervol/BCI_Coding/blob/master/c7e226b482ebeb313ea802f.jpg)
+![10-20系统](https://github.com/lipervol/BCI_Coding/blob/master/image/c7e226b482ebeb313ea802f.jpg)
 
 作用电极一共四个，分别放置在P3、P4以及O1、O2处，参考电极放置在Pz和Oz处（*采用国际标准导联10-20系统*）
 
@@ -67,4 +67,4 @@
 
 这是目前的输出，我设置的时间窗是2秒，也就是每2秒获取一次缓冲区里最新的数据然后判断，这个是12hz闪烁的时候的情况，基本都是准的
 
-![12hz](https://github.com/lipervol/BCI_Coding/blob/master/0ffa2f500bf16d6464d5b968092a794.png)
+![12hz](https://github.com/lipervol/BCI_Coding/blob/master/image/0ffa2f500bf16d6464d5b968092a794.png)
