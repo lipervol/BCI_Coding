@@ -104,8 +104,8 @@ while not done:
                 done = True
         if event.type == pygame.QUIT:
             done = True
-    screen.fill((0, 0, 0))
-    clock.tick(150)
+    screen.fill((0, 0, 0))  # 设置背景颜色
+    clock.tick(150)  # 设置背景刷新率
     flickymanager.process()
     flickymanager.draw()
     pygame.display.flip()
