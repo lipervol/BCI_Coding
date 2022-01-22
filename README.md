@@ -68,3 +68,9 @@
 这是目前的输出，我设置的时间窗是2秒，也就是每2秒获取一次缓冲区里最新的数据然后判断，这个是12hz闪烁的时候的情况，基本都是准的
 
 ![12hz](https://github.com/lipervol/BCI_Coding/blob/master/image/0ffa2f500bf16d6464d5b968092a794.png)
+
+## Day Four
+
+简单的做了一下交互功能（在在MyBCI/SSVEP_game，需要屏幕刷新率120Hz以上），屏幕上有一个小幽灵，左边闪烁频率是12Hz，右边是15Hz，你看那边这个小幽灵就会往那边移动，作为展示效果还是可以的。
+
+![game](https://github.com/lipervol/BCI_Coding/blob/master/image/20220122203737.png)
