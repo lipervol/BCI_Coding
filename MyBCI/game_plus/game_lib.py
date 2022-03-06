@@ -167,7 +167,7 @@ class Game(object):
         self.flickymanager = FlickyManager(self.screen)
         self.flickymanager.add("left", 5)
         self.flickymanager.add("right", 4)
-        self.font = pygame.font.SysFont("./cambriai.ttf", 60)
+        self.font = pygame.font.SysFont("./font/cambriai.ttf", 60)
         self.text = self.font.render("score:0", True, (255,255,255))
         self.score = 0
         pygame.time.set_timer(UPDATE_ENEMY_EVENT, 10)
