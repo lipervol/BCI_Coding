@@ -6,10 +6,6 @@
 
 **设备**：设备用的是淘宝买的 *OpenBCI Cyton WIFI+蓝牙 16通道 + 16通道电极帽*，拿来做练习用
 
-安装好设备之后带上大概是这个效果：
-
-![佩戴](https://github.com/lipervol/BCI_Coding/blob/master/image/A1B99D9C1FCB650DB7F338446B33E16A.png)
-
 初步测试了一下输出，看着有些乱，但是大概可以看到在25Hz左右有一个明显的尖峰，也就是有较强的beta波，表明我此时处于一个注意力集中的状态（*看数据ing*）
 
 ![数据](https://github.com/lipervol/BCI_Coding/blob/master/image/3528488a43ec2eb33f270e994ce7c2f.png)
@@ -74,3 +70,11 @@
 简单的做了一下交互功能（在在MyBCI/SSVEP_game，需要屏幕刷新率120Hz以上），屏幕上有一个小幽灵，左边闪烁频率是12Hz，右边是15Hz，你看那边这个小幽灵就会往那边移动，作为展示效果还是可以的。
 
 ![game](https://github.com/lipervol/BCI_Coding/blob/master/image/20220122203737.png)
+
+## Day Five
+
+忙了一个月毕设，昨天晚上写了一下，鉴于识别目前方法的准确率不高，做了一个容错率比较高的小游戏，只要及时识别对了方向就可以击中敌机，同样要求屏幕刷新率120Hz，后续可能会尝试一下改成self-attention网络进行识别
+
+![game1](https://github.com/lipervol/BCI_Coding/blob/master/image/game1.png)
+
+![game2](https://github.com/lipervol/BCI_Coding/blob/master/image/game2.png)

@@ -115,6 +115,14 @@ class Hero(pygame.sprite.Sprite):
 
             self.bullets.add(bullet)
 
+    def move(self, direction):
+        if direction == 0:
+            self.speed = 0
+        if direction == 1:
+            self.speed = -2
+        if direction == 2:
+            self.speed = 2
+
 
 # 敌人
 class Enemy(pygame.sprite.Sprite):
@@ -168,7 +176,7 @@ class Game(object):
         self.flickymanager.add("left", 5)
         self.flickymanager.add("right", 4)
         self.font = pygame.font.SysFont("./font/cambriai.ttf", 60)
-        self.text = self.font.render("score:0", True, (255,255,255))
+        self.text = self.font.render("score:0", True, (255, 255, 255))
         self.score = 0
         pygame.time.set_timer(UPDATE_ENEMY_EVENT, 10)
         pygame.time.set_timer(HERO_FIRE_EVENT, 240)
@@ -196,9 +204,9 @@ class Game(object):
                     pygame.quit()
                     exit()
                 if event.key == pygame.K_LEFT:
-                    self.hero.speed = -2
+                    self.hero.move(1)
                 if event.key == pygame.K_RIGHT:
-                    self.hero.speed = 2
+                    self.hero.move(2)
 
     def __update_sprites(self):
         self.hero_group.update()
@@ -210,14 +218,15 @@ class Game(object):
         self.flickymanager.draw()
 
     def __check_collide(self):
-        hit_list = pygame.sprite.groupcollide(self.hero.bullets,self.enemy_group,True,False)
+        hit_list = pygame.sprite.groupcollide(self.hero.bullets, self.enemy_group, True, False)
         if hit_list and self.enemy.status == 0:
             self.enemy.status = 1
             self.score += 1
-            self.text = self.font.render("score:" + str(self.score), True, (255,255,255))
+            self.text = self.font.render("score:" + str(self.score), True, (255, 255, 255))
         if self.enemy.status == 1:
-            if self.enemy.break_idx//4 < 9:
-                self.enemy.image = pygame.transform.scale(pygame.image.load("./break/"+str(self.enemy.break_idx//4)+".png"), (150, 120))
+            if self.enemy.break_idx // 4 < 9:
+                self.enemy.image = pygame.transform.scale(
+                    pygame.image.load("./break/" + str(self.enemy.break_idx // 4) + ".png"), (150, 150))
                 self.enemy.break_idx += 1
             else:
                 self.enemy.status = 2
