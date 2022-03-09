@@ -245,8 +245,3 @@ class Game(object):
             self.__update_sprites()
             self.screen.blit(self.text, (A / 2, A / 2))
             pygame.display.flip()
-
-
-if __name__ == "__main__":
-    game = Game()
-    game.start_game()

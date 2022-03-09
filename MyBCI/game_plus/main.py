@@ -1,7 +1,5 @@
-import threading
 import time
 from ctypes import windll
-
 import numpy as np
 import serial
 from threading import Thread
@@ -80,42 +78,46 @@ def cca_classification(X, Y_list):
     return corr
 
 
-# 修改windows系统时钟分辨率
-timeBeginPeriod = windll.winmm.timeBeginPeriod
-timeBeginPeriod(1)
-# 游戏进程
-game = mygame.Game()
-hero = game.hero
-game_th = threading.Thread(target=game.start_game())
-# 接收和处理数据主线程
-buffer = []
-portx = "COM5"
-recv = Thread(target=recv_data, args=(buffer, portx,))  # 启动接收数据线程
-recv.start()
+def get_action(player):
+    time.sleep(5)
+    while True:
+        time.sleep(window_size)
+        # np.save("./buffer", buffer)  # 保存数据
+        dataset = np.array(buffer[-window_size * fs - 1:-1])  # 选取最后一段数据
+        data = pre_data(dataset, channel_num)  # 生成数据
+        corr_list = cca_classification(data, template)
+        index = corr_list.index(max(corr_list))
+        re_f = ft[index]
+        re_corr = max(corr_list)
+        print("识别频率：", re_f)
+        print("相关系数：", re_corr)
+        if abs(re_f - f_set[0]) < 1.3:
+            player.move(1)
+        elif abs(re_f - f_set[1]) < 2:
+            player.move(2)
+        else:
+            player.move(0)
 
+
+# 参数设置
 fs = 250
 window_size = 3  # 采样数据宽度
 channel_num = [0, 1, 2]  # 通道编号
 t = np.linspace(0, window_size, window_size * fs)  # 时轴
 ft = np.linspace(11, 18, 50)  # 模板频率成分
 template = gen_template(ft, t)  # 生成模板列表
-f_set = [12, 15.5]  # 设置的频率
-
-time.sleep(5)
-while True:
-    time.sleep(window_size)
-    # np.save("./buffer", buffer)  # 保存数据
-    dataset = np.array(buffer[-window_size * fs - 1:-1])  # 选取最后一段数据
-    data = pre_data(dataset, channel_num)  # 生成数据
-    corr_list = cca_classification(data, template)
-    index = corr_list.index(max(corr_list))
-    re_f = ft[index]
-    re_corr = max(corr_list)
-    print("识别频率：", re_f)
-    print("相关系数：", re_corr)
-    if abs(re_f - f_set[0]) < 0.75:
-        hero.move(1)
-    elif abs(re_f - f_set[1]) < 1.5:
-        hero.move(2)
-    else:
-        hero.move(0)
+f_set = [12.5, 15.5]  # 设置的频率
+# 修改windows系统时钟分辨率
+timeBeginPeriod = windll.winmm.timeBeginPeriod
+timeBeginPeriod(1)
+# 接收和处理数据主线程
+buffer = []
+portx = "COM5"
+recv_th = Thread(target=recv_data, args=(buffer, portx,))  # 启动接收数据线程
+recv_th.start()
+# 游戏进程
+game = mygame.Game()
+hero = game.hero
+action_th = Thread(target=get_action,args=(hero,))
+action_th.start()
+game.start_game()
